@@ -134,6 +134,7 @@ private extension AdLaunchView {
     
     @objc func singleTapAction() {
         self.delegate?.adLaunchView(self, bannerImageDidClick: imageURL)
+        toHidenState()
     }
     
     @objc func toHidenState() {

@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         adLaunchView = AdLaunchView(frame: UIScreen.mainScreen().bounds)
+        adLaunchView?.delegate = self
         window?.addSubview(adLaunchView!)
         return true;
     }
@@ -55,8 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: AdLaunchViewDelegate {
     func adLaunchView(launchView: AdLaunchView, bannerImageDidClick imageURL: String) {
-        print("click test")
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://desgard.com")!)
+        let urls = "http://www.desgard.com/"
+        if let url: NSURL = NSURL(string: urls) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
     }
 }
 
