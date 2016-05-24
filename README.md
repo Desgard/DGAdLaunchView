@@ -1,7 +1,5 @@
 #DGAdLaunchView
-
 ![Platforms](https://cocoapod-badges.herokuapp.com/p/MZTimerLabel/badge.png)
-
 ==============
 
 ![img](demo.gif)
