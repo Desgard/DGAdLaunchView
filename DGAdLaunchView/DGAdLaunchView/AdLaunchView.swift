@@ -10,8 +10,10 @@ import UIKit
 
 
 @objc protocol AdLaunchViewDelegate: NSObjectProtocol {
-    
+    func adLaunchView(launchView: AdLaunchView, bannerImageDidClick imageURL: String)
 }
+
+private var sloganHeight: CGFloat = 128
 
 final class AdLaunchView: UIView {
     
@@ -22,7 +24,7 @@ final class AdLaunchView: UIView {
         let wid = UIScreen.mainScreen().bounds.width
         let hei = UIScreen.mainScreen().bounds.height
         
-        var footer: UIView = UIView(frame: CGRectMake(0, hei - 128, wid, 128))
+        var footer: UIView = UIView(frame: CGRectMake(0, hei - sloganHeight, wid, sloganHeight))
         footer.backgroundColor = UIColor.whiteColor()
         
         var slogan: UIImageView = UIImageView(image: UIImage(named: "KDTKLaunchSlogan_Content"))
@@ -84,7 +86,7 @@ private extension AdLaunchView {
     func displayCachedAd() {
         let manange: SDWebImageManager = SDWebImageManager()
         let url = NSURL(string: imageURL)
-        if (!manange.cachedImageExistsForURL(url)) {
+        if (manange.cachedImageExistsForURL(url) == false) {
             self.hidden = true
         } else {
             showImage()
@@ -92,21 +94,15 @@ private extension AdLaunchView {
     }
     
     func requestBanner() {
-        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-            NSURL(string: imageURL),
-            options: SDWebImageDownloaderOptions.UseNSURLCache,
-            progress: nil,
-            completed: { (image, data, error, bool) -> Void in
-                if image != nil {
-                    print("广告已经下载成功")
-                }
-        })
+        SDWebImageManager.sharedManager().downloadImageWithURL(NSURL(string: self.imageURL), options: SDWebImageOptions.AvoidAutoSetImage, progress: nil) { (image:UIImage!, error:NSError!, cacheType:SDImageCacheType, finished:Bool, url:NSURL!) in
+            print("图片下载成功")
+        }
         
         
     }
     
     func showImage() {
-        adImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height - 128))
+        adImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height - sloganHeight))
         if let adImageView = adImageView {
             adImageView.sd_setImageWithURL(NSURL(string: imageURL))
             adImageView.userInteractionEnabled = true
@@ -137,7 +133,7 @@ private extension AdLaunchView {
     }
     
     @objc func singleTapAction() {
-        
+        self.delegate?.adLaunchView(self, bannerImageDidClick: imageURL)
     }
     
     @objc func toHidenState() {
