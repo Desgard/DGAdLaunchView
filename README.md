@@ -1,10 +1,10 @@
 #DGAdLaunchView
 
-![img](demo.gif)
+![Platforms](https://cocoapod-badges.herokuapp.com/p/MZTimerLabel/badge.png)
 
 ==============
 
-![Platforms](https://cocoapod-badges.herokuapp.com/p/MZTimerLabel/badge.png)
+![img](demo.gif)
 
 ##Purpose
 
