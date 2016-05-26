@@ -1,8 +1,12 @@
 #DGAdLaunchView
+
 ![Platforms](https://cocoapod-badges.herokuapp.com/p/MZTimerLabel/badge.png)
 
-**已经更新ObjC版，大家可打开ObjC目录查看下载**
 ==============
+
+**已经更新ObjC版，大家可打开ObjC目录查看下载**
+
+[代码逻辑可以看我的blog此文](http://desgard.com/2016/05/23/DGAdLaunchView/)
 
 ![img](demo.gif)
 
@@ -25,6 +29,6 @@ DGAdLaunchView是[口袋题库](https://itunes.apple.com/us/app/kou-dai-ti-ku-ka
 
 ##more
 
-* 增加代理方法，自定义点击事件；
+* 增加代理方法，自定义点击事件；【已经完成】
 * 自定义倒计时按钮样式，目前市面上有两种，我已经做好，近期上传；
 * 写单例方法，在appdelegate调用的时候更加方便。
