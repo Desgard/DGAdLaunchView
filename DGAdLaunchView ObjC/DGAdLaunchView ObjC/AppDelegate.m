@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "AdLaunchView.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<AdLaunchViewDelegate>
 
 @property(nonatomic, strong) AdLaunchView *adLaunchView;
 
@@ -21,7 +21,7 @@
     [self.window makeKeyAndVisible];
     
     self.adLaunchView = [[AdLaunchView alloc] initWithFrame: [UIScreen mainScreen].bounds];
-    
+    self.adLaunchView._delegate = self;
     [self.window addSubview: self.adLaunchView];
     return YES;
 }
@@ -46,6 +46,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) adLaunch:(AdLaunchView *)launchView {
+    NSURL *url = [[NSURL alloc] initWithString: @"http://www.desgard.com/"];
+    [[UIApplication sharedApplication] openURL: url];
 }
 
 @end

@@ -11,13 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
 
-@protocol AdLaunchViewDelegate <NSObject>
-
-- (void) adLaunch: (AdLaunchView *)launchView;
-
-@end
-
-@interface AdLaunchView()
+@interface AdLaunchView() 
 
 @property(nonatomic, strong) UIView *adBackground;
 @property(nonatomic, strong) NSString *imageURL;
@@ -79,7 +73,8 @@
 
 #pragma mark - 图片点击事件
 - (void) singleTap {
-    
+    [self._delegate adLaunch: self];
+    [self toHidenState];
 }
 
 #pragma mark - 下载图片
