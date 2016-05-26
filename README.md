@@ -1,5 +1,7 @@
 #DGAdLaunchView
 ![Platforms](https://cocoapod-badges.herokuapp.com/p/MZTimerLabel/badge.png)
+
+**已经更新ObjC版，大家可打开ObjC目录查看下载**
 ==============
 
 ![img](demo.gif)
