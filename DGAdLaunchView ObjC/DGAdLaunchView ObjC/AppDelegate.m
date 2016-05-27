@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self.window makeKeyAndVisible];
     
-    self.adLaunchView = [[AdLaunchView alloc] initWithFrame: [UIScreen mainScreen].bounds];
+    self.adLaunchView = [[AdLaunchView alloc] initWithFrame: [UIScreen mainScreen].bounds type: AdLaunchProgressType];
     self.adLaunchView._delegate = self;
     [self.window addSubview: self.adLaunchView];
     return YES;

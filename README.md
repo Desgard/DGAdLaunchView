@@ -4,11 +4,12 @@
 
 ==============
 
-**已经更新ObjC版，大家可打开ObjC目录查看下载**
+**ObjC版更新倒计时样式**
 
 [代码逻辑可以看我的blog此文](http://desgard.com/2016/05/23/DGAdLaunchView/)
 
 ![img](demo.gif)
+![img](demo2.gif)
 
 ##Purpose
 

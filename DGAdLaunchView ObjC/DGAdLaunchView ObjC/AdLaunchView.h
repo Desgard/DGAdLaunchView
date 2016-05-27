@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 @class AdLaunchView;
 
+typedef NS_ENUM(NSUInteger, AdLaunchType) {
+    AdLaunchProgressType = 0,
+    AdLaunchTimerType
+};
+
 @protocol AdLaunchViewDelegate <NSObject>
 
 - (void) adLaunch: (AdLaunchView *)launchView;
@@ -18,4 +23,5 @@
 @interface AdLaunchView : UIView
 @property(nonatomic, retain) id<AdLaunchViewDelegate> _delegate;
 
+- (instancetype) initWithFrame: (CGRect)frame type: (AdLaunchType) type;
 @end

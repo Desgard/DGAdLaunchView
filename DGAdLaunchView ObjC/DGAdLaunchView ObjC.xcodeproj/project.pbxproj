@@ -43,6 +43,8 @@
 		D59FC3411CF613ED000DF86C /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D59FC3341CF613ED000DF86C /* View+MASAdditions.m */; };
 		D59FC3421CF613ED000DF86C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D59FC3371CF613ED000DF86C /* ViewController+MASAdditions.m */; };
 		D59FC3451CF61428000DF86C /* AdLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D59FC3441CF61428000DF86C /* AdLaunchView.m */; };
+		D5A3D4011CF89AEA0055B3EE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5A3D3FE1CF89AEA0055B3EE /* Info.plist */; };
+		D5A3D4021CF89AEA0055B3EE /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A3D4001CF89AEA0055B3EE /* MZTimerLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +123,9 @@
 		D59FC3371CF613ED000DF86C /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		D59FC3431CF61428000DF86C /* AdLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdLaunchView.h; sourceTree = "<group>"; };
 		D59FC3441CF61428000DF86C /* AdLaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdLaunchView.m; sourceTree = "<group>"; };
+		D5A3D3FE1CF89AEA0055B3EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5A3D3FF1CF89AEA0055B3EE /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
+		D5A3D4001CF89AEA0055B3EE /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +185,7 @@
 		D59FC2E31CF610BE000DF86C /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				D5A3D3FD1CF89AEA0055B3EE /* MZTimerLabel */,
 				D59FC31D1CF613ED000DF86C /* Masonry */,
 				D59FC2EB1CF6110A000DF86C /* SDWebImage */,
 				D59FC2E41CF610CC000DF86C /* DACircularProgress */,
@@ -271,6 +277,16 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		D5A3D3FD1CF89AEA0055B3EE /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				D5A3D3FE1CF89AEA0055B3EE /* Info.plist */,
+				D5A3D3FF1CF89AEA0055B3EE /* MZTimerLabel.h */,
+				D5A3D4001CF89AEA0055B3EE /* MZTimerLabel.m */,
+			);
+			path = MZTimerLabel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -331,6 +347,7 @@
 				D59FC3381CF613ED000DF86C /* Info.plist in Resources */,
 				D59FC2DC1CF61090000DF86C /* LaunchScreen.storyboard in Resources */,
 				D59FC2D91CF61090000DF86C /* Assets.xcassets in Resources */,
+				D5A3D4011CF89AEA0055B3EE /* Info.plist in Resources */,
 				D59FC2D71CF61090000DF86C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +363,7 @@
 				D59FC2D41CF61090000DF86C /* ViewController.m in Sources */,
 				D59FC31A1CF6110A000DF86C /* UIImageView+HighlightedWebCache.m in Sources */,
 				D59FC3401CF613ED000DF86C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				D5A3D4021CF89AEA0055B3EE /* MZTimerLabel.m in Sources */,
 				D59FC3451CF61428000DF86C /* AdLaunchView.m in Sources */,
 				D59FC31B1CF6110A000DF86C /* UIImageView+WebCache.m in Sources */,
 				D59FC3191CF6110A000DF86C /* UIImage+WebP.m in Sources */,
@@ -522,6 +540,7 @@
 				D59FC2E21CF61090000DF86C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

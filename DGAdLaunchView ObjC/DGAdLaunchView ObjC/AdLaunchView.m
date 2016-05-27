@@ -10,6 +10,9 @@
 #import "DACircularProgressView.h"
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
+#import "MZTimerLabel.h"
+
+AdLaunchType state = AdLaunchProgressType;
 
 @interface AdLaunchView() 
 
@@ -26,6 +29,11 @@
 
 #pragma mark - override
 - (instancetype) initWithFrame:(CGRect)frame {
+    return [self initWithFrame: frame type: AdLaunchProgressType];
+}
+
+- (instancetype) initWithFrame: (CGRect)frame type: (AdLaunchType) type {
+    state = type;
     self = [super initWithFrame: frame];
     [self addSubview: self.adBackground];
     [self displayCachedAd];
@@ -89,20 +97,60 @@
 
 #pragma mark - 展示跳过按钮
 - (void) showProgressView {
-    self.progressButtonView = [[UIButton alloc] initWithFrame: CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 40, 40)];
-    [self.progressButtonView setTitle: @"跳" forState: UIControlStateNormal];
-    self.progressButtonView.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.progressButtonView.backgroundColor = [UIColor clearColor];
-    [self.progressButtonView addTarget: self
-                                action: @selector(toHidenState)
-                      forControlEvents: UIControlEventTouchUpInside];
-    [self addSubview: self.progressButtonView];
+    switch (state) {
+        case AdLaunchProgressType:
+            self.progressButtonView = [[UIButton alloc] initWithFrame: CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 40, 40)];
+            [self.progressButtonView setTitle: @"跳" forState: UIControlStateNormal];
+            self.progressButtonView.titleLabel.textAlignment = NSTextAlignmentCenter;
+            self.progressButtonView.backgroundColor = [UIColor clearColor];
+            [self.progressButtonView addTarget: self
+                                        action: @selector(toHidenState)
+                              forControlEvents: UIControlEventTouchUpInside];
+            [self addSubview: self.progressButtonView];
+            
+            self.progressView = [[DACircularProgressView alloc] initWithFrame: CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 40, 40)];
+            self.progressView.userInteractionEnabled = NO;
+            self.progressView.progress = 0;
+            [self addSubview: self.progressView];
+            [self.progressView setProgress: 1 animated: YES initialDelay: 0 withDuration:4];
+            break;
+            
+        case AdLaunchTimerType:
+            self.progressButtonView = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+            self.progressButtonView.layer.masksToBounds = YES;
+            self.progressButtonView.layer.cornerRadius = 12;
+            self.progressButtonView.backgroundColor = [UIColor blackColor];
+            self.progressButtonView.alpha = 0.3;
+            [self.progressButtonView addTarget: self
+                                        action: @selector(toHidenState)
+                              forControlEvents: UIControlEventTouchUpInside];
+            
+            
+            MZTimerLabel *timeLabel = [[MZTimerLabel alloc] initWithTimerType: MZTimerLabelTypeTimer];
+            timeLabel.textAlignment = NSTextAlignmentRight;
+            timeLabel.timeFormat = @"s 跳过";
+            timeLabel.textColor = [UIColor whiteColor];
+            timeLabel.font = [UIFont systemFontOfSize: 14];
+            timeLabel.userInteractionEnabled = NO;
+            [timeLabel setCountDownTime: 4];
+            
+            [timeLabel start];
+            [self addSubview: self.progressButtonView];
+            [self addSubview: timeLabel];
+            
+            [self.progressButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(CGSizeMake(64, 24));
+                make.top.equalTo(self).offset(24);
+                make.right.equalTo(self).offset(-16);
+            }];
+            
+            [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.center.equalTo(self.progressButtonView);
+            }];
+            
+            break;
+    }
     
-    self.progressView = [[DACircularProgressView alloc] initWithFrame: CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 40, 40)];
-    self.progressView.userInteractionEnabled = NO;
-    self.progressView.progress = 0;
-    [self addSubview: self.progressView];
-    [self.progressView setProgress: 1 animated: YES initialDelay: 0 withDuration:4];
     
 
 }
@@ -143,7 +191,7 @@
 }
 
 - (NSString *) imageURL {
-    NSString *str = @"http://mg.soupingguo.com/bizhi/big/10/258/043/10258043.jpg";
+    NSString *str = @"http://www.bizhituku.com/file/d/dongmanbizhi/20150309/201503091827501686.jpg";
     return str;
 }
 
