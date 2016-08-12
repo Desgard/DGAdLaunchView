@@ -60,9 +60,8 @@ AdLaunchType state = AdLaunchProgressType;
 
 #pragma mark - 获取本地图片缓存，如果没有广告结束
 - (void) displayCachedAd {
-    SDWebImageManager *manage = [[SDWebImageManager alloc] init];
-    NSURL *url = [[NSURL alloc] initWithString: self.imageURL];
-    if ([manage cacheKeyForURL: url] == NO) {
+    UIImage *lastPreviousCachedImage = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:self.imageURL];
+    if (!lastPreviousCachedImage) {
         self.hidden = YES;
     } else {
         [self showImage];
@@ -191,7 +190,8 @@ AdLaunchType state = AdLaunchProgressType;
 }
 
 - (NSString *) imageURL {
-    NSString *str = @"http://www.bizhituku.com/file/d/dongmanbizhi/20150309/201503091827501686.jpg";
+//    NSString *str = @"http://www.bizhituku.com/file/d/dongmanbizhi/20150309/201503091827501686.jpg";
+    NSString *str = @"http://img.shenghuozhe.net/shz/2016/05/07/750w_1224h_043751462609867.jpg";
     return str;
 }
 

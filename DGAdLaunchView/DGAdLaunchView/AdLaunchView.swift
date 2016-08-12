@@ -85,8 +85,7 @@ private extension AdLaunchView {
     
     func displayCachedAd() {
         let manange: SDWebImageManager = SDWebImageManager()
-        let url = NSURL(string: imageURL)
-        if (manange.cachedImageExistsForURL(url) == false) {
+        if (((manange.imageCache.imageFromDiskCacheForKey(imageURL)) == nil)) {
             self.hidden = true
         } else {
             showImage()
